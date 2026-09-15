@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Titiksha — Quantitative Risk</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Titiksha — quantitative risk analyst, physics-trained (FRM Part I). Market, liquidity, model, and credit risk work, education, and selected projects.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#EEECE6;
+  --paper:#F8F6F1;
+  --ink:#211C1D;
+  --ink-muted:#6E6564;
+  --ink-faint:#9C9291;
+  --rule:rgba(33,28,29,.15);
+  --rule-strong:rgba(33,28,29,.30);
+  --accent:#7A2436;
+  --accent-strong:#5C1A28;
+  --accent-soft:rgba(122,36,54,.09);
+  --shadow:0 1px 3px rgba(33,28,29,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#171313; --paper:#1E1919; --ink:#EAE3E1; --ink-muted:#A79D9B; --ink-faint:#746A69;
+    --rule:rgba(234,227,225,.14); --rule-strong:rgba(234,227,225,.28);
+    --accent:#D98CA0; --accent-strong:#E8AEBD; --accent-soft:rgba(217,140,160,.13);
+    --shadow:0 1px 3px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#171313; --paper:#1E1919; --ink:#EAE3E1; --ink-muted:#A79D9B; --ink-faint:#746A69;
+  --rule:rgba(234,227,225,.14); --rule-strong:rgba(234,227,225,.28);
+  --accent:#D98CA0; --accent-strong:#E8AEBD; --accent-soft:rgba(217,140,160,.13);
+  --shadow:0 1px 3px rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box;}
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Source Serif 4", Georgia, serif; font-size:16.5px; line-height:1.58;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{ background:var(--accent-soft); color:var(--ink); }
+a{ color:var(--accent-strong); text-decoration-thickness:1px; text-underline-offset:2px; }
+a:hover{ color:var(--accent); }
+a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+h1,h2,h3{ font-family:"Libre Caslon Text", Georgia, serif; font-weight:400; margin:0; text-wrap:balance; color:var(--ink); }
+.mono{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+
+#themeToggle{
+  position:fixed; top:16px; right:16px; z-index:50; width:30px; height:30px; border-radius:2px;
+  border:1px solid var(--rule-strong); background:var(--paper); color:var(--ink-muted);
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+}
+#themeToggle svg{ width:14px; height:14px; }
+#themeToggle:hover{ color:var(--accent); border-color:var(--accent); }
+
+/* ============ LAYOUT ============ */
+.layout{
+  max-width:1180px; margin:0 auto; padding:58px 32px 100px;
+  display:grid; grid-template-columns:290px 1fr; gap:0 60px; align-items:start;
+}
+.sidebar{ position:sticky; top:48px; }
+.main{ min-width:0; }
+
+/* ---- sidebar ---- */
+.sb-photo{
+  width:100%; aspect-ratio:1/1; border-radius:6px; overflow:hidden; margin-bottom:20px;
+  border:1px solid var(--rule); box-shadow:var(--shadow);
+}
+.sb-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+.sb-name{ font-size:2rem; font-style:italic; }
+.sb-role{ margin-top:10px; font-weight:600; font-size:1.02rem; }
+.sb-scope{ font-family:"IBM Plex Mono", monospace; font-size:.74rem; color:var(--accent-strong); letter-spacing:.03em; margin-top:3px; }
+.sb-scope b{ color:var(--ink-faint); font-weight:600; }
+
+.sb-block{ margin-top:22px; padding-top:16px; border-top:1px solid var(--rule); }
+.sb-label{ font-family:"IBM Plex Mono", monospace; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px; }
+
+table.sb-facts{ width:100%; border-collapse:collapse; font-size:.8rem; }
+table.sb-facts td{ padding:8px 0; border-top:1px solid var(--rule); vertical-align:top; }
+table.sb-facts tr:first-child td{ border-top:none; padding-top:0; }
+table.sb-facts td.k{
+  font-family:"IBM Plex Mono", monospace; font-size:.64rem; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--ink-faint); width:34%; white-space:nowrap; padding-right:10px;
+}
+table.sb-facts td.v{ color:var(--ink); }
+table.sb-facts td.v a{ display:block; margin-bottom:3px; }
+table.sb-facts td.v small{ color:var(--ink-muted); font-size:.78rem; }
+
+.sb-visa{ font-size:.76rem; color:var(--ink-faint); margin-top:12px; padding-top:12px; border-top:1px solid var(--rule); }
+
+/* ============ MAIN SECTIONS ============ */
+.sec{ margin-bottom:56px; }
+.sec-title{ font-size:1.5rem; margin-bottom:4px; }
+.sec-note{ font-family:"IBM Plex Mono", monospace; font-size:.72rem; color:var(--ink-faint); font-style:italic; margin-bottom:20px; }
+
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:0 36px; }
+
+/* ---- about (horizontal scroll) ---- */
+.about-scroll{
+  display:flex; gap:16px; overflow-x:auto; padding-bottom:14px; scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch;
+}
+.about-scroll::-webkit-scrollbar{ height:5px; }
+.about-scroll::-webkit-scrollbar-thumb{ background:var(--rule-strong); border-radius:4px; }
+.about-card{
+  flex:0 0 auto; width:min(320px,78vw); scroll-snap-align:start;
+  background:var(--paper); border:1px solid var(--rule); border-radius:6px; padding:18px 20px;
+  font-size:.87rem; color:var(--ink-muted); box-shadow:var(--shadow);
+}
+.about-card b{ color:var(--ink); font-weight:600; }
+
+/* ---- education blocks ---- */
+.edublock{ border-top:2px solid var(--accent); padding:14px 0 18px; break-inside:avoid; }
+.edu-head{ display:flex; align-items:flex-start; gap:11px; }
+.edu-logos{ display:flex; gap:4px; flex:none; margin-top:1px; }
+.edu-logo{
+  width:30px; height:30px; border-radius:4px; background:#fff; border:1px solid var(--rule);
+  display:flex; align-items:center; justify-content:center; overflow:hidden; flex:none;
+}
+.edu-logo img{ width:100%; height:100%; object-fit:contain; padding:3px; }
+.edublock .deg{ font-weight:600; font-size:1rem; }
+.edublock .org{ font-family:"IBM Plex Mono", monospace; font-size:.76rem; color:var(--accent-strong); margin-top:3px; }
+.edublock .org a{ color:var(--accent-strong); }
+.edublock .yr{ font-family:"IBM Plex Mono", monospace; font-size:.72rem; color:var(--ink-faint); float:right; }
+.edublock .courses{ font-size:.8rem; color:var(--ink-muted); margin-top:8px; }
+
+/* ---- experience ---- */
+.xp{ border-top:1px solid var(--rule); padding:20px 0; break-inside:avoid; }
+.xp.full{ grid-column:1 / -1; }
+.xp:first-child{ border-top:none; padding-top:2px; }
+.xp-top{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap; }
+.xp-role{ font-weight:600; font-size:1.02rem; }
+.xp-date{ font-family:"IBM Plex Mono", monospace; font-size:.72rem; color:var(--ink-faint); white-space:nowrap; }
+.xp-org{ font-family:"IBM Plex Mono", monospace; font-size:.78rem; color:var(--accent-strong); margin-top:2px; }
+.xp-org a{ color:var(--accent-strong); }
+.xp ul{ margin:11px 0 0; padding-left:17px; font-size:.87rem; color:var(--ink); }
+.xp ul li{ margin-bottom:7px; }
+.xp ul b{ color:var(--accent-strong); font-weight:600; }
+
+/* ---- work / projects ---- */
+.worksub{
+  font-family:"IBM Plex Mono", monospace; font-size:.7rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--ink-faint); margin:0 0 14px;
+}
+.work{ border-top:1px solid var(--rule); padding:18px 0; break-inside:avoid; }
+.work.full{ grid-column:1 / -1; border-top:none; padding-top:2px; }
+.grid2 > .work:nth-child(-n+2){ border-top:none; padding-top:2px; }
+.work-t{ font-weight:600; font-size:.98rem; }
+.work-t a{ color:var(--ink); }
+.work-t a:hover{ color:var(--accent-strong); }
+.work-m{ font-family:"IBM Plex Mono", monospace; font-size:.76rem; color:var(--accent-strong); margin-top:4px; }
+.work-d{ font-size:.83rem; color:var(--ink-muted); margin-top:7px; }
+
+/* ---- recognition ---- */
+.rec{ border-top:1px solid var(--rule); padding:14px 0; }
+.grid2 > .rec:nth-child(-n+2){ border-top:none; padding-top:2px; }
+.rec b{ font-size:.92rem; }
+.rec span{ display:block; font-size:.8rem; color:var(--ink-muted); margin-top:2px; }
+
+/* ---- closing ---- */
+.closing{
+  margin-top:10px; padding:26px 28px; border:1px solid var(--rule-strong); background:var(--paper); box-shadow:var(--shadow);
+}
+.closing p{ margin:0; max-width:56ch; }
+.closing .cta{ margin-top:16px; display:flex; gap:20px; flex-wrap:wrap; font-size:.88rem; }
+.closing .cta a{ display:inline-flex; align-items:center; gap:7px; }
+.closing .cta svg{ width:14px; height:14px; color:var(--ink-faint); }
+
+footer.runner{
+  margin-top:50px; padding-top:14px; border-top:1px solid var(--rule);
+  font-family:"IBM Plex Mono", monospace; font-size:.68rem; color:var(--ink-faint);
+}
+
+@media (max-width:980px){
+  .layout{ grid-template-columns:1fr; }
+  .sidebar{ position:static; margin-bottom:44px; max-width:520px; }
+}
+@media (max-width:640px){
+  .layout{ padding:48px 18px 70px; }
+  .grid2{ grid-template-columns:1fr; }
+  .grid2 > .work:nth-child(-n+2), .grid2 > .rec:nth-child(-n+2){ border-top:1px solid var(--rule); padding-top:18px; }
+  .grid2 > .work:first-child, .grid2 > .rec:first-child{ border-top:none; padding-top:2px; }
+}
+</style>
+</head>
+<body>
+
+<button id="themeToggle" aria-label="Toggle color theme">
+  <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  <svg id="iconSun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+</button>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="sb-photo"><img src="profile_headshot.jpg" alt="Titiksha"></div>
+
+    <div class="sb-name">Titiksha</div>
+    <div class="sb-role">Quantitative Risk Analyst</div>
+    <div class="sb-scope"><b>Trained:</b> Physics &amp; Mathematics &middot; <b>Focus:</b> Market, Liquidity, Model &amp; Credit Risk</div>
+
+    <div class="sb-block">
+      <table class="sb-facts">
+        <tr><td class="k">Current Role</td><td class="v">Associate AML Analyst<br><small>Solytics Partners, India</small></td></tr>
+        <tr><td class="k">Studied</td><td class="v">MSc Complex Systems Modelling, KCL<br><small>B.Tech, IIT Guwahati</small></td></tr>
+        <tr><td class="k">Exam</td><td class="v">FRM Part I &mdash; Passed, Aug 2026<br><small><a href="https://my.garp.org/DigitalBadgeFRMI?id=003Po00001hpsLHIAY" target="_blank" rel="noopener">Digital badge &#8599;</a></small></td></tr>
+        <tr><td class="k">Location</td><td class="v">London, UK &amp; India<br><small>UK Graduate visa &mdash; right to work</small></td></tr>
+        <tr><td class="k">Contact</td><td class="v">
+          <a href="mailto:mahititiksha@gmail.com">mahititiksha@gmail.com</a>
+          <a href="tel:+447778811487">+44 7778 811487</a>
+          <a href="https://www.linkedin.com/in/titiksha-/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+          <a href="https://github.com/Titiksha20" target="_blank" rel="noopener">GitHub &#8599;</a>
+        </td></tr>
+      </table>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <!-- ABOUT -->
+    <section class="sec" id="about">
+      <div class="sec-note" style="margin-bottom:12px;">about &middot; scroll &rarr;</div>
+      <div class="about-scroll">
+        <div class="about-card"><b>Trained in theoretical physics, mathematics, and complex-systems modelling</b> &mdash; MSc, King&rsquo;s College London, Distinction.</div>
+        <div class="about-card">Currently <b>developing and validating detection and rating models</b> in AML analytics at Solytics Partners. Hold FRM Part&nbsp;I.</div>
+        <div class="about-card">My methodology &mdash; <b>stochastic processes, statistical learning, empirical validation</b> &mdash; was first tested on physical systems: molecular diffusion, particle simulation.</div>
+        <div class="about-card">Now applied consistently to financial ones: <b>volatility regimes, portfolio risk, credit default, transaction-monitoring models.</b></div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="sec" id="education">
+      <h2 class="sec-title">Education</h2>
+      <div class="sec-note">the theoretical basis for everything below</div>
+      <div class="grid2">
+        <div class="edublock">
+          <div class="edu-head">
+            <div class="edu-logos"><span class="edu-logo"><img src="logos/kcl.svg" alt="King's College London"></span></div>
+            <div>
+              <span class="yr">2024&ndash;25</span>
+              <div class="deg">MSc, Complex Systems Modelling &mdash; Distinction (73.58/100)</div>
+              <div class="org"><a href="https://www.kcl.ac.uk/" target="_blank" rel="noopener">King&rsquo;s College London</a></div>
+            </div>
+          </div>
+          <div class="courses">Financial Markets &middot; Interest Rate &amp; Credit Risk &middot; Numerical &amp; Computational Methods in Finance &middot; Stochastic Processes &middot; Statistical Learning</div>
+        </div>
+
+        <div class="edublock">
+          <div class="edu-head">
+            <div class="edu-logos"><span class="edu-logo"><img src="logos/garp.png" alt="GARP"></span></div>
+            <div>
+              <span class="yr">2026</span>
+              <div class="deg">Financial Risk Manager, Part I &mdash; Passed</div>
+              <div class="org"><a href="https://my.garp.org/DigitalBadgeFRMI?id=003Po00001hpsLHIAY" target="_blank" rel="noopener">GARP &mdash; Digital Badge &#8599;</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="edublock">
+          <div class="edu-head">
+            <div class="edu-logos">
+              <span class="edu-logo"><img src="logos/sorbonne.svg" alt="Sorbonne Universit&eacute;"></span>
+              <span class="edu-logo"><img src="logos/parissaclay.svg" alt="Universit&eacute; Paris-Saclay"></span>
+            </div>
+            <div>
+              <span class="yr">2023&ndash;24</span>
+              <div class="deg">Master 1, Fundamental and Applied Physics</div>
+              <div class="org"><a href="https://www.sorbonne-universite.fr/" target="_blank" rel="noopener">Sorbonne Universit&eacute;</a> &amp; <a href="https://www.universite-paris-saclay.fr/" target="_blank" rel="noopener">Universit&eacute; Paris-Saclay</a>, Paris</div>
+            </div>
+          </div>
+          <div class="courses">Advanced Statistical Mechanics &middot; Numerical Methods in Physics</div>
+        </div>
+
+        <div class="edublock">
+          <div class="edu-head">
+            <div class="edu-logos"><span class="edu-logo"><img src="logos/iitg.svg" alt="IIT Guwahati"></span></div>
+            <div>
+              <span class="yr">2019&ndash;23</span>
+              <div class="deg">B.Tech, Engineering Physics</div>
+              <div class="org"><a href="https://www.iitg.ac.in/" target="_blank" rel="noopener">IIT Guwahati</a></div>
+            </div>
+          </div>
+          <div class="courses">Mathematics I &amp; II &middot; Graph Theory &middot; Statistical Mechanics &middot; Simulation Techniques in Physical Systems</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="sec" id="experience">
+      <h2 class="sec-title">Experience</h2>
+      <div class="sec-note">where the method was tested</div>
+
+      <div class="xp full">
+        <div class="xp-top"><span class="xp-role">Associate AML Analyst</span><span class="xp-date mono">Mar 2026 &ndash; Present</span></div>
+        <div class="xp-org">Solytics Partners &middot; India</div>
+        <ul>
+          <li>Built a dual rule-based and machine-learning <b>Customer Risk Rating (CRR) framework</b>: engineered factor/sub-factor risk-weightage features across Corporate and Retail segments, iterated feature sets across 4 development cycles, and benchmarked the ML scorecard against the rule-based baseline using SHAP for score explainability.</li>
+          <li>Built and benchmarked <b>TP/FP classification models</b> (XGBoost, LightGBM, and monotonic/GAM architectures) for transaction-monitoring alert scoring, comparing model generalization and overfitting risk, and using SHAP to attribute key drivers, interactions and non-linear effects.</li>
+          <li><b>Calibrated</b> detection thresholds via Youden&rsquo;s J statistic, KS/PSI drift diagnostics, and ROC/PR optimization under walk-forward, out-of-sample validation, flagging non-generalizing recommendations and reducing rule redundancy through Jaccard overlap analysis across 10+ scenarios.</li>
+          <li>Developed <b>anomaly detection and pattern discovery models</b> using Isolation Forest, Extended Isolation Forest, One-Class SVM and K-Means, and built Python APIs and analytical dashboards for automated, real-time model scoring and monitoring.</li>
+          <li>Researched and drafted a <b>regulatory model validation framework</b> for a multi-engine transaction-monitoring system, covering conceptual soundness, data lineage/ETL reconciliation, feature-store parity testing, and a model risk-rating methodology.</li>
+        </ul>
+      </div>
+
+      <div class="grid2">
+        <div class="xp">
+          <div class="xp-top"><span class="xp-role">AI &amp; Risk Analytics Intern</span><span class="xp-date mono">Oct 2024 &ndash; Apr 2025</span></div>
+          <div class="xp-org"><a href="https://riskinfo.ai/" target="_blank" rel="noopener">Riskinfo.ai</a>, London</div>
+          <ul>
+            <li><b>InCred Insight:</b> Built and optimized XGBoost models for financial fraud detection, UID aggregation, and hyperparameter tuning to improve signal quality; achieved validation AUC of &sim;0.88 with stable cross-validation performance.</li>
+            <li>Authored monthly newsletters, each synthesizing 40+ regulatory and market updates across 8+ jurisdictions, delivering actionable insights on fintech, AI in capital markets, crypto regulations, and investment risk.</li>
+          </ul>
+        </div>
+        <div class="xp">
+          <div class="xp-top"><span class="xp-role">Graduate Researcher</span><span class="xp-date mono">May &ndash; Jul 2024</span></div>
+          <div class="xp-org"><a href="https://www.sorbonne-universite.fr/" target="_blank" rel="noopener">IMPMC, Sorbonne Universit&eacute;</a></div>
+          <ul>
+            <li>Architected a stochastic simulation framework analyzing 8 models with Numba-optimized Python, reducing ACF computation time by 60% through algorithmic improvements and strategic data caching.</li>
+            <li>Implemented numerical solvers for first-passage time estimation, analogous to barrier option pricing.</li>
+          </ul>
+        </div>
+        <div class="xp">
+          <div class="xp-top"><span class="xp-role">Undergraduate Researcher</span><span class="xp-date mono">Aug 2022 &ndash; Apr 2023</span></div>
+          <div class="xp-org"><a href="https://www.iitg.ac.in/" target="_blank" rel="noopener">IIT Guwahati</a></div>
+          <ul>
+            <li>TensorFlow GNN layers for physics simulation &mdash; GNS-level accuracy at <b>5&ndash;8&times;</b> data efficiency.</li>
+            <li>Message-passing to stabilize rollouts on ~20K-particle systems.</li>
+          </ul>
+        </div>
+        <div class="xp">
+          <div class="xp-top"><span class="xp-role">Research Intern, Mitacs Globalink</span><span class="xp-date mono">May &ndash; Aug 2022</span></div>
+          <div class="xp-org">Univ. of Western Ontario, Canada</div>
+          <ul>
+            <li>PEG macromolecule simulations in water droplets using <b>NAMD</b>.</li>
+            <li>Identified a coagulation phenomenon, later corroborated experimentally. <a href="https://pubs.acs.org/jpcbfk/article-abstract/127/21/4829/855032/Limitations-of-Atomistic-Molecular-Dynamics-to?redirectedFrom=fulltext" target="_blank" rel="noopener">Published, J. Phys. Chem. B &#8599;</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section class="sec" id="work">
+      <h2 class="sec-title">Selected Work</h2>
+      <div class="sec-note">backtesting evidence</div>
+
+      <div class="worksub">Financial Risk, Quantitative Finance &amp; ML</div>
+      <div class="grid2">
+        <div class="work">
+          <div class="work-t"><a href="https://github.com/Titiksha20/Vix-real-time-forecasting.git" target="_blank" rel="noopener">VIX Time Series Forecasting</a></div>
+          <div class="work-m">0.95 regime AUC &middot; 95.8% variance (HAR)</div>
+          <div class="work-d">A real-time volatility risk-monitoring system decomposing VIX into level, regime, direction, and mean-reversion. A regime classifier (XGBoost vs. Random Forest) beats a persistence baseline by 8&ndash;9.5pp, while an HAR model validated against AR(1)/Ridge benchmarks explains 95.8% of VIX variance &mdash; producing actionable risk and position-sizing signals.</div>
+        </div>
+        <div class="work">
+          <div class="work-t"><a href="https://github.com/Titiksha20/Quantitative-Portfolio-Risk-Analysis.git" target="_blank" rel="noopener">Portfolio Analytics &amp; Stress Testing</a></div>
+          <div class="work-m">&minus;2.05% 1-day 95% VaR &middot; 0.47 Sharpe</div>
+          <div class="work-d">Backtested a 27-equity portfolio against 3 benchmarks across 150k+ price observations (2020&ndash;25), then ran a 20,000-path Monte Carlo efficient frontier and a 10-scenario stress-testing framework &mdash; including a named liquidity crisis &mdash; with automated risk categorization.</div>
+        </div>
+        <div class="work">
+          <div class="work-t"><a href="https://github.com/Titiksha20/Credit-card-default-prediction.git" target="_blank" rel="noopener">Credit Card Default Prediction</a></div>
+          <div class="work-m">0.78 ROC-AUC &middot; 70% recall</div>
+          <div class="work-d">An end-to-end credit-default scorecard on 30,000 UCI records: 20+ engineered features covering utilization and payment behavior, 5 classifiers benchmarked, and a cost-based confusion-matrix analysis quantifying real business impact.</div>
+        </div>
+        <div class="work">
+          <div class="work-t"><a href="https://github.com/Titiksha20/Forex-rate-Analysis-using-FokkerPlanck.git" target="_blank" rel="noopener">Fokker&ndash;Planck Analysis of FX Rates</a></div>
+          <div class="work-m">371,080 ticks &middot; drift &asymp; 0</div>
+          <div class="work-d">Stochastic analysis of USD/PLN microstructure: empirical and conditional PDFs, Kramers&ndash;Moyal drift/diffusion coefficients, and an Ornstein&ndash;Uhlenbeck reconstruction confirming near-zero mean drift and volatility clustering in the diffusion term.</div>
+        </div>
+        <div class="work">
+          <div class="work-t"><a href="https://github.com/Titiksha20/Airbnb-London-Price-Prediction-and-Analysis.git" target="_blank" rel="noopener">Airbnb London Pricing &amp; Market Analysis</a></div>
+          <div class="work-m">0.667 R&sup2; &middot; 60k+ listings</div>
+          <div class="work-d">A production-ready pricing model for 60k+ London listings (XGBoost, 70 engineered features), deployed as an interactive Streamlit dashboard for real-time price prediction, confidence intervals, and market segmentation.</div>
+        </div>
+        <div class="work">
+          <div class="work-t"><a href="https://github.com/Titiksha20/Alpha-Formula-Optimization-and-Backtesting-for-S-P-500-Portfolio.git" target="_blank" rel="noopener">Alpha-Driven Volatility-Targeted Strategy</a></div>
+          <div class="work-d">Systematic S&amp;P 500 framework: alpha signals, volatility-targeted sizing, risk-parity allocation, backtested across regimes.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECOGNITION -->
+    <section class="sec" id="recognition">
+      <h2 class="sec-title">Recognition</h2>
+      <div class="grid2">
+        <div class="rec"><b>JEE Advanced, Top 0.54%</b><span>Rank 8,037 of 1.5M candidates (2019)</span></div>
+        <div class="rec"><b>Mitacs Globalink Research Fellow</b><span>Competitive international fellowship (2022)</span></div>
+        <div class="rec"><b>SMARTS-UP Scholar</b><span>Merit-based mobility award, &euro;10,000 (2023)</span></div>
+        <div class="rec"><b>TEDxIITGuwahati Director</b><span>Speaker curation, sponsorship, fund management (2022)</span></div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="sec" id="contact" style="margin-bottom:0;">
+      <div class="closing">
+        <p>I&rsquo;m looking at market, liquidity, model, and credit risk analyst roles in the UK, India, and anywhere else the work is right. If any of the above is relevant to what you&rsquo;re hiring for, I&rsquo;d like to talk.</p>
+        <div class="cta">
+          <a href="mailto:mahititiksha@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 4l8 8 8-8"/></svg>mahititiksha@gmail.com</a>
+          <a href="https://www.linkedin.com/in/titiksha-/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+          <a href="https://github.com/Titiksha20" target="_blank" rel="noopener">GitHub &#8599;</a>
+        </div>
+      </div>
+      <footer class="runner">Titiksha &middot; Updated September 2026</footer>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  (function(){
+    var root = document.documentElement;
+    var stored = localStorage.getItem('theme-pref');
+    if(stored === 'dark' || stored === 'light'){ root.setAttribute('data-theme', stored); }
+    function isDark(){
+      var explicit = root.getAttribute('data-theme');
+      if(explicit) return explicit === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    function paintIcons(){
+      var dark = isDark();
+      document.getElementById('iconMoon').style.display = dark ? 'none' : 'block';
+      document.getElementById('iconSun').style.display = dark ? 'block' : 'none';
+    }
+    paintIcons();
+    document.getElementById('themeToggle').addEventListener('click', function(){
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme-pref', next);
+      paintIcons();
+    });
+  })();
+</script>
+
+</body>
+</html>
